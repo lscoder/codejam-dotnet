@@ -29,7 +29,7 @@ namespace LSCoder.CodeJam.ConsoleProcessor
 
         private void ShowMenu(IDictionary<int, ProblemInputFile> files)
         {
-            _textWriter.WriteLine("\n\nChoose one of the input files listed below\n");
+            _textWriter.WriteLine("Choose one of the input files listed below\n");
 
             foreach (var file in files)
             {
@@ -60,6 +60,7 @@ namespace LSCoder.CodeJam.ConsoleProcessor
                 if (fileId == 0)
                     return null;
 
+                _textWriter.WriteLine("\n");
             } while (!problemInputFiles.ContainsKey(fileId));
 
             return problemInputFiles[fileId];
