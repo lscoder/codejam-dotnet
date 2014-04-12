@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="LSCoder.CodeJam.ConsoleProcessor" GeneratedClassName="CodeJamSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="InputFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\inputFiles\</Value>
+    </Setting>
+    <Setting Name="OutputFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\outputFiles\</Value>
+    </Setting>
+    <Setting Name="ClearOutputDirectory" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="OutputFileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Solution.txt</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
