@@ -52,7 +52,7 @@ namespace LSCoder.CodeJam.ConsoleProcessor {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Solution.txt")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Solution.out")]
         public string OutputFileName {
             get {
                 return ((string)(this["OutputFileName"]));

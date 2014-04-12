@@ -21,7 +21,7 @@ namespace LSCoder.CodeJam.ConsoleProcessor
             var fileName = CodeJamSettings.Default.OutputFileName;
             
             if (string.IsNullOrWhiteSpace(fileName))
-                fileName = DateTime.Now.ToString("yyyy.MM.dd-HH.mm.ss.fff") + ".txt";
+                fileName = DateTime.Now.ToString("yyyy.MM.dd-HH.mm.ss.fff") + ".out";
 
             return fileName;
         }
@@ -70,6 +70,9 @@ namespace LSCoder.CodeJam.ConsoleProcessor
             {
                 foreach (var file in Directory.GetFiles(filePath))
                 {
+                    if ((Path.GetFileName(file)).StartsWith("."))
+                        continue;
+
                     File.Delete(file);
                 }
             }
