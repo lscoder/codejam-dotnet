@@ -1,7 +1,7 @@
 rmdir submit /q /s
 mkdir submit
 mkdir submit\src
-copy src\LSCoder.CodeJam.ConsoleProcessor\outputFiles\Solution.txt submit
+copy src\LSCoder.CodeJam.ConsoleProcessor\outputFiles\Solution.out submit
 xcopy src submit\src /s
 
 cd submit\src
