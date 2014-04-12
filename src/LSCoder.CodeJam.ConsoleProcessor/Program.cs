@@ -40,6 +40,8 @@ namespace LSCoder.CodeJam.ConsoleProcessor
         {
             var result = "";
 
+            /************************** YOUR CODE **************************/
+
             WriteResult(testCaseId, result, outputFile);
         }
 
