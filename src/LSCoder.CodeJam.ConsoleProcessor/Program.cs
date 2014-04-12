@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
-using System.Linq;
+using System.Threading;
 
 namespace LSCoder.CodeJam.ConsoleProcessor
 {
@@ -10,6 +10,8 @@ namespace LSCoder.CodeJam.ConsoleProcessor
     {
         static void Main(string[] args)
         {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-us");
+
             var fileManager = new FileManager();
             var inputFileSelector = new AsciiMenuFileSelector(fileManager, Console.In, Console.Out);
 
@@ -25,13 +27,18 @@ namespace LSCoder.CodeJam.ConsoleProcessor
             inputFile.Dispose();
             outputFile.Dispose();
 
+            Trace.WriteLine(string.Format("\nFile `{0}` created!", problemInputFile.Name));
+
             Console.ReadKey(true);
         }
 
         private static void Solve(TextReader inputFile, TextWriter outputFile)
         {
-            var testCaseCount = Int32.Parse(inputFile.ReadLine());
-            for(var i = 1; i <= testCaseCount; i++)
+            var testCasesCount = Int32.Parse(inputFile.ReadLine());
+
+            Trace.WriteLine(string.Format("\nRunning `{0}` test cases...\n", testCasesCount));
+
+            for (var i = 1; i <= testCasesCount; i++)
             {
                 SolveTestCase(i, inputFile, outputFile);
             }
@@ -39,11 +46,9 @@ namespace LSCoder.CodeJam.ConsoleProcessor
 
         private static void SolveTestCase(int testCaseId, TextReader inputFile, TextWriter outputFile)
         {
-            var result = "";
+            /************************** YOUR CODE HERE **************************/
 
-            /************************** YOUR CODE **************************/
-
-            WriteResult(testCaseId, result, outputFile);
+            WriteResult(testCaseId, "Your result here", outputFile);
         }
 
         private static void WriteResult(int testCaseId, string result, TextWriter outputFile)
