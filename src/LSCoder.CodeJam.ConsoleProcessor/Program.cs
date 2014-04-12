@@ -40,8 +40,55 @@ namespace LSCoder.CodeJam.ConsoleProcessor
         private static void SolveTestCase(int testCaseId, TextReader inputFile, TextWriter outputFile)
         {
             var result = "";
+            var values = new Dictionary<int, bool>();
 
-            /************************** YOUR CODE **************************/
+            var firstRow = Int32.Parse(inputFile.ReadLine());
+            for (int i = 1; i <= 4; i++)
+            {
+                var line = inputFile.ReadLine();
+                if (i == firstRow)
+                {
+                    foreach (var value in line.Split(' '))
+                    {
+                        values.Add(Int32.Parse(value), false);
+                    }
+                }
+            }
+
+            var secondRow = Int32.Parse(inputFile.ReadLine());
+            for (int i = 1; i <= 4; i++)
+            {
+                var line = inputFile.ReadLine();
+                if (i == secondRow)
+                {
+                    foreach (var value in line.Split(' '))
+                    {
+                        var intValue = Int32.Parse(value);
+                        if(values.ContainsKey(intValue))
+                        {
+                            values[intValue] = true;
+                        }
+                    }
+                }
+            }
+
+            var count = 0;
+            var gotIt = 0;
+            foreach (var keyValue in values)
+            {
+                if(keyValue.Value)
+                {
+                    count++;
+                    gotIt = keyValue.Key;
+                }
+            }
+
+            if (count == 0)
+                result = "Volunteer cheated!";
+            else if (count == 1)
+                result = gotIt.ToString();
+            else
+                result = "Bad magician!";
 
             WriteResult(testCaseId, result, outputFile);
         }
