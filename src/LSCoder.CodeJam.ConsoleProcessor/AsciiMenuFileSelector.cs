@@ -44,7 +44,7 @@ namespace LSCoder.CodeJam.ConsoleProcessor
 
         #region Public Methods
 
-        public TextReader Select()
+        public ProblemInputFile Select()
         {
             var problemInputFiles = _fileManager.ScanInputFiles();
             int fileId;
@@ -62,7 +62,7 @@ namespace LSCoder.CodeJam.ConsoleProcessor
 
             } while (!problemInputFiles.ContainsKey(fileId));
 
-            return _fileManager.OpenInputFile(problemInputFiles[fileId]);
+            return problemInputFiles[fileId];
         }
 
         #endregion
