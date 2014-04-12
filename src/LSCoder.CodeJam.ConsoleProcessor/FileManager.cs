@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Text;
 
@@ -14,16 +12,6 @@ namespace LSCoder.CodeJam.ConsoleProcessor
         private string GetApplicationPath()
         {
             return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        }
-
-        private string GetOutputFileName()
-        {
-            var fileName = CodeJamSettings.Default.OutputFileName;
-            
-            if (string.IsNullOrWhiteSpace(fileName))
-                fileName = DateTime.Now.ToString("yyyy.MM.dd-HH.mm.ss.fff") + ".out";
-
-            return fileName;
         }
 
         #endregion
@@ -55,26 +43,15 @@ namespace LSCoder.CodeJam.ConsoleProcessor
             return new StreamReader(new FileStream(problemInputFile.Path, FileMode.Open, FileAccess.Read));
         }
 
-        public TextWriter CreateOutputFile()
+        public TextWriter CreateOutputFile(ProblemInputFile problemInputFile)
         {
-            var fileName = GetOutputFileName();
+            var fileName = Path.GetFileNameWithoutExtension(problemInputFile.Name) + CodeJamSettings.Default.OutputFileExtension;
             var filePath = Path.GetFullPath(Path.Combine(GetApplicationPath(), CodeJamSettings.Default.OutputFilePath));
             var fullFileName = Path.Combine(filePath, fileName);
 
             if (!Directory.Exists(filePath))
             {
                 Directory.CreateDirectory(filePath);
-            }
-
-            if(CodeJamSettings.Default.ClearOutputDirectory)
-            {
-                foreach (var file in Directory.GetFiles(filePath))
-                {
-                    if ((Path.GetFileName(file)).StartsWith("."))
-                        continue;
-
-                    File.Delete(file);
-                }
             }
 
             if (File.Exists(fullFileName))

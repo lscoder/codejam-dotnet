@@ -13,11 +13,12 @@ namespace LSCoder.CodeJam.ConsoleProcessor
             var fileManager = new FileManager();
             var inputFileSelector = new AsciiMenuFileSelector(fileManager, Console.In, Console.Out);
 
-            var inputFile = inputFileSelector.Select();
-            if (inputFile == null)
+            var problemInputFile = inputFileSelector.Select();
+            if (problemInputFile == null)
                 return;
 
-            var outputFile = fileManager.CreateOutputFile();
+            var inputFile = fileManager.OpenInputFile(problemInputFile);
+            var outputFile = fileManager.CreateOutputFile(problemInputFile);
 
             Solve(inputFile, outputFile);
 

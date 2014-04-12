@@ -1,10 +1,16 @@
-rmdir submit /q /s
-mkdir submit
+REM rmdir submit /q /s
+REM mkdir submit
+del submit\*.out /f /q
+del submit\*.rar /f /q
 mkdir submit\src
-copy src\LSCoder.CodeJam.ConsoleProcessor\outputFiles\Solution.out submit
 xcopy src submit\src /s
 
+
 cd submit\src
+
+for /f "tokens=*" %%a in ('dir LSCoder.CodeJam.ConsoleProcessor\outputFiles\*.out /b /od') do set newest=%%a
+copy LSCoder.CodeJam.ConsoleProcessor\outputFiles\%newest% ..
+REM copy LSCoder.CodeJam.ConsoleProcessor\outputFiles\Solution.out submit
 
 del LSCoder.CodeJam.6.0.ReSharper.user /q
 rmdir LSCoder.CodeJam.ConsoleProcessor\bin /q /s
@@ -20,4 +26,3 @@ rmdir src /q /s
 
 REM Exits from 'submit' folder
 cd ..
-

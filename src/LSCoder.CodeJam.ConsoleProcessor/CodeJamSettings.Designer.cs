@@ -43,19 +43,10 @@ namespace LSCoder.CodeJam.ConsoleProcessor {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ClearOutputDirectory {
+        [global::System.Configuration.DefaultSettingValueAttribute(".out")]
+        public string OutputFileExtension {
             get {
-                return ((bool)(this["ClearOutputDirectory"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Solution.out")]
-        public string OutputFileName {
-            get {
-                return ((string)(this["OutputFileName"]));
+                return ((string)(this["OutputFileExtension"]));
             }
         }
     }
