@@ -38,17 +38,18 @@ namespace LSCoder.CodeJam.ConsoleProcessor
 
             Trace.WriteLine(string.Format("\nRunning `{0}` test cases...\n", testCasesCount));
 
-            for (var i = 1; i <= testCasesCount; i++)
+            for (var testCaseId = 1; testCaseId <= testCasesCount; testCaseId++)
             {
-                SolveTestCase(i, inputFile, outputFile);
+                var result = Solve(inputFile);
+                WriteResult(testCaseId, result, outputFile);
             }
         }
 
-        private static void SolveTestCase(int testCaseId, TextReader inputFile, TextWriter outputFile)
+        private static string Solve(TextReader inputFile)
         {
             /************************** YOUR CODE HERE **************************/
 
-            WriteResult(testCaseId, "Your result here", outputFile);
+            return "Your result here";
         }
 
         private static void WriteResult(int testCaseId, string result, TextWriter outputFile)
