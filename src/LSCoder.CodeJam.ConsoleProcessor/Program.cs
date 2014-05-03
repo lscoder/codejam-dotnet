@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -47,9 +48,24 @@ namespace LSCoder.CodeJam.ConsoleProcessor
 
         private static string Solve(Scanner scanner)
         {
-            /************************** YOUR CODE HERE **************************/
+            var input = scanner.ReadLongArray();
+            var A = input[0];
+            var B = input[1];
+            var K = input[2];
 
-            return "Your result here";
+            var count = 0;
+
+            // Small file only
+            for (int a = 0; a < A; a++)
+            {
+                for (int b = 0; b < B; b++)
+                {
+                    if ((a & b) < K)
+                        count++;
+                }
+            }
+
+            return count.ToString();
         }
 
         private static void WriteResult(int testCaseId, string result, TextWriter outputFile)
