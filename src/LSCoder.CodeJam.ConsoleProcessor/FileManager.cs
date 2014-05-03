@@ -43,6 +43,11 @@ namespace LSCoder.CodeJam.ConsoleProcessor
             return new StreamReader(new FileStream(problemInputFile.Path, FileMode.Open, FileAccess.Read));
         }
 
+        public Scanner OpenInputFileScanner(ProblemInputFile problemInputFile)
+        {
+            return new Scanner(OpenInputFile(problemInputFile));
+        }
+
         public TextWriter CreateOutputFile(ProblemInputFile problemInputFile)
         {
             var fileName = Path.GetFileNameWithoutExtension(problemInputFile.Name) + CodeJamSettings.Default.OutputFileExtension;
